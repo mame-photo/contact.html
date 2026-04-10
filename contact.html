@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+    <style>
+        :root {
+            --primary-color: #4a4a4a; /* 洗練されたダークグレー */
+            --accent-color: #d1b89a;  /* 上品なベージュ */
+            --bg-color: #fafafa;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 0; /* 直角でモダンな印象に */
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background-color: #fff;
+            -webkit-appearance: none; /* iOSのデフォルトスタイル解除 */
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* ジャンル選択のラジオボタンをカスタム */
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .radio-item {
+            position: relative;
+        }
+
+        .radio-item input {
+            display: none;
+        }
+
+        .radio-item label {
+            display: block;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.3s;
+        }
+
+        .radio-item input:checked + label {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .note {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reservation</h2>
+    
+    <form action="#" method="POST">
+        <div class="form-group">
+            <label>お名前 / Name</label>
+            <input type="text" name="name" placeholder="山田 太郎" required>
+        </div>
+
+        <div class="form-group">
+            <label>メールアドレス / Email</label>
+            <input type="email" name="email" placeholder="example@mail.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>撮影ジャンル / Category</label>
+            <div class="radio-group">
+                <div class="radio-item">
+                    <input type="radio" id="cat1" name="category" value="birthday" checked>
+                    <label for="cat1">バースデー・七五三</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="cat2" name="category" value="wedding">
+                    <label for="cat2">ウエディング</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="cat3" name="category" value="seijin">
+                    <label for="cat3">成人式</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="cat4" name="category" value="other">
+                    <label for="cat4">その他</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>第一希望日 / Preferred Date</label>
+            <input type="date" name="date">
+        </div>
+
+        <div class="form-group">
+            <label>メッセージ・ご相談内容 / Message</label>
+            <textarea name="message" rows="5" placeholder="ご希望のロケーションや、ふんわりした相談でもお気軽にどうぞ"></textarea>
+        </div>
+
+        <button type="submit">確認画面へ進む</button>
+        
+        <p class="note">※2営業日以内に担当よりご連絡いたします。</p>
+    </form>
+</div>
+
+</body>
+</html>
